@@ -28,6 +28,7 @@ ICMAKER_ADD_HEADERS(
   FileReaderInterface.h
   XyzFileReader.h
   PointCloud.h
+  PointCloudTX.h
   MetaPointCloud.h
   BitVector.h
   CompileIssues.h
@@ -55,6 +56,8 @@ ICMAKER_ADD_CUDA_FILES(
   cuda_handling.cu
   PointCloud.h
   PointCloud.cu
+  PointCloudTX.h
+  PointCloudTX.cu
   MetaPointCloud.cu
   kernels/MetaPointCloudOperations.h
   kernels/MetaPointCloudOperations.cu
