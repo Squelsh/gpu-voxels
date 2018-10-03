@@ -21,6 +21,8 @@ IF(NOT ROS_ROOT)
     set(ROS_ROOT /opt/ros/hydro)
   ELSEIF(EXISTS "/opt/ros/groovy/include/ros/time.h")
     set(ROS_ROOT /opt/ros/groovy)
+  ELSEIF(EXISTS "/opt/ros/melodic/include/ros/time.h")
+    set(ROS_ROOT /opt/ros/melodic)
   ELSE()
     set(ROS_ROOT /opt/ros/fuerte)
   ENDIF()
@@ -34,6 +36,10 @@ find_path(ROS_INCLUDE_DIR
   NAMES ros/time.h
   PATHS ${ROS_PKGCONF_INCLUDE_DIRS} "${ROS_ROOT}/include"
 )
+
+MESSAGE(STATUS "ROS_INCLUDE_DIR is " ${ROS_INCLUDE_DIR})
+MESSAGE(STATUS "ROS_ROOT is " ${ROS_ROOT})
+
 
 SET (ros_libraries rostime roslib roscpp roscpp_serialization rosconsole tf actionlib)
 FOREACH (ros_library ${ros_libraries})
@@ -61,10 +67,14 @@ set(ROS_PROCESS_INCLUDES ROS_INCLUDE_DIR)
 set(ROS_PROCESS_LIBS ROS_CORE_LIBRARIES)
 libfind_process(ROS)
 
+
+
 PRINT_LIBRARY_STATUS(ROS
   DETAILS "[${ROS_LIBRARIES}][${ROS_INCLUDE_DIRS}]"
   COMPONENTS "${ROS_FIND_COMPONENTS}"
 )
+
+set(ROS_INCLUDE_DIRS "${ROS_ROOT}/include")
 
 ### Handle components
 

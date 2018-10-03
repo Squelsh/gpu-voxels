@@ -162,7 +162,7 @@ ENDIF()
 IF(ICMAKER_USE_DEPRECATED_PACKAGES)
   # deprecated:
   MESSAGE(STATUS "=== Searching Deprecated packages ===")
-  FIND_PACKAGE(Eigen2)
+  #FIND_PACKAGE(Eigen2)
   IF (ICMAKER_USE_QT3)
     FIND_PACKAGE(Qt3)
     ADD_DEFINITIONS(-D_IC_BUILDER_QT_3_)
